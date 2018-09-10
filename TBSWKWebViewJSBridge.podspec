@@ -44,7 +44,7 @@ callbackId String= 暂无
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'fupenghua' => '390908980@qq.com' }
   s.source           = { :git => 'https://github.com/fupenghua/TBSJSBridgeForWKWebView.git', :tag => s.version.to_s }
-    s.source_files = 'TBSWKWebViewJSBridge/*.{h,m}'
+  s.source_files = 'TBSWKWebViewJSBridge/*.{h,m}'
   s.resource     = 'TBSWKWebViewJSBridge/JSBridge.bundle'
   s.ios.deployment_target = '8.0'
 
