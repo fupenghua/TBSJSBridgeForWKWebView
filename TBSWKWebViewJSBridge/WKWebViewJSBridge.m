@@ -238,7 +238,7 @@ static NSString * const TBSBridgeLoaded = @"bridgeLoaded";
 -(NSString *)handlerJS {
     NSBundle *curBundle = [NSBundle bundleForClass:self.class];
     NSString *curBundleName = curBundle.infoDictionary[@"CFBundleName"];
-    NSString *curBundleDirectory = [NSString stringWithFormat:@"%@.bundle", curBundleName];
+    NSString *curBundleDirectory = [NSString stringWithFormat:@"%@.bundle", @"JSBridge"];
 
     NSString *path =[curBundle pathForResource:@"WebViewJavaScriptBridge" ofType:@"js" inDirectory:curBundleDirectory];
     NSString *handlerJS = [NSString stringWithContentsOfFile:path encoding:kCFStringEncodingUTF8 error:nil];
