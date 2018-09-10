@@ -18,25 +18,35 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
+页面上的js已初始化时需要调用window.webkit.messageHandlers.Bridge.postMessage('{ "handlerName": "bridgeLoaded" }')
+1.js调用ios
 
+window.webkit.messageHandlers.Bridge在webkit初始化时已声明，js可直接调用，无需等待。
+js向ios发送消息: window.webkit.messageHandlers.Bridge.postMessage(message)
+message JSON
+handlerName String 调用bridge的名字，如share、alert
+data Object 传递给native的数据
+callbackId String callback的id，ios回调时，改名为responseId
+ios回调：window.WebViewJavascriptBridge._handleMessageFromNative(message)
+message JSON
+responseData Object 给js的数据
+responseId String 值为js传过来的callbackId
+2.ios调用js
+
+ios调用：window.WebViewJavascriptBridge._handleMessageFromNative(message)
+message JSON
+handlerName String 值为Events (JavaScript Handler)
+data Object 传递给js的数据
+callbackId String= 暂无
                        DESC
 
-  s.homepage         = 'https://github.com/fupenghua/TBSWKWebViewJSBridge'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.homepage         = 'https://github.com/fupenghua/TBSJSBridgeForWKWebView'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'fupenghua' => '390908980@qq.com' }
-  s.source           = { :git => 'https://github.com/fupenghua/TBSWKWebViewJSBridge.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => 'https://github.com/fupenghua/TBSJSBridgeForWKWebView.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'TBSWKWebViewJSBridge/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'TBSWKWebViewJSBridge' => ['TBSWKWebViewJSBridge/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end
