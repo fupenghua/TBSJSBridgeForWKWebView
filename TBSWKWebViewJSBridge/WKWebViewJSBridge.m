@@ -163,6 +163,7 @@ static NSString * const TBSBridgeLoaded = @"bridgeLoaded";
 
 - (void)_dispatchMessage:(id)message{
     NSString *messageJSON = [self _serializeMessage:message pretty:NO];
+    messageJSON = [messageJSON stringByReplacingOccurrencesOfString:@"\\u0000" withString:@""];
     messageJSON = [messageJSON stringByReplacingOccurrencesOfString:@"\\" withString:@"\\\\"];
     messageJSON = [messageJSON stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
     messageJSON = [messageJSON stringByReplacingOccurrencesOfString:@"\'" withString:@"\\\'"];

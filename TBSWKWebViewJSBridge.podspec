@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TBSWKWebViewJSBridge'
-  s.version          = '1.0.1'
+  s.version          = '1.0.2'
   s.summary          = 'js和native通讯，只用于WKWebView.'
 
 # This description is used to generate tags and improve search results.
